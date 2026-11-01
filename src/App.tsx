@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Menu, X, Mail, ArrowRight } from 'lucide-react'
+import { Menu, X, Mail, ArrowRight, ChevronDown } from 'lucide-react'
 import seal from '@/assets/seal.webp'
 import { content, EMAIL, type Lang } from '@/content'
+import { bylaws, BYLAWS_VERSION } from '@/bylaws'
 
 /* ---------- small graphic elements from the VI ---------- */
 
@@ -130,6 +131,8 @@ export default function App() {
   const [lang, setLang] = useState<Lang>(initialLang)
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [openCh, setOpenCh] = useState<boolean[]>(() => bylaws.map((_, i) => i === 0))
+  const allOpen = openCh.every(Boolean)
   const c = content[lang]
   const isZh = lang === 'zh'
 
@@ -455,6 +458,87 @@ export default function App() {
                 )
               })}
             </ol>
+          </div>
+        </section>
+
+        {/* ---------------- bylaws ---------------- */}
+        <section id="bylaws" className="grid-paper bg-brand-apricot py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="grid gap-10 md:grid-cols-[0.8fr_1.4fr] md:gap-14">
+              <div className="md:sticky md:top-24 md:self-start">
+                <SectionHead eyebrow={c.bylaws.eyebrow} title={c.bylaws.title} />
+                <div className="reveal mt-3 text-[15px] font-medium text-brand">{BYLAWS_VERSION}</div>
+                <p className="reveal mt-6 text-[17px] leading-[1.9] text-brand-ink/85 sm:text-[18px]">{c.bylaws.lead}</p>
+                {c.bylaws.langNote && (
+                  <p className="reveal mt-4 border-l-2 border-brand-gold pl-4 text-[16px] leading-[1.8] text-brand-deep">
+                    {c.bylaws.langNote}
+                  </p>
+                )}
+                <ul className="reveal mt-6 space-y-3">
+                  {c.bylaws.notes.map((n) => (
+                    <li key={n} className="flex gap-3 text-[15.5px] leading-[1.75] text-brand-ink/75">
+                      <Star className="mt-[7px] h-3 w-3 flex-none text-brand-gold" />
+                      <span>{n}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="reveal mt-6 break-words text-[15.5px] leading-[1.75] text-brand-ink/75">
+                  {c.bylaws.feedback}
+                  <a
+                    href={`mailto:${EMAIL}?subject=${encodeURIComponent(c.bylaws.mailSubject)}`}
+                    className="font-medium text-brand underline-offset-4 hover:underline"
+                  >
+                    {EMAIL}
+                  </a>
+                </p>
+              </div>
+
+              <div>
+                <div className="mb-4 flex justify-end">
+                  <button
+                    onClick={() => setOpenCh(bylaws.map(() => !allOpen))}
+                    className="rounded border border-brand/40 bg-brand-ivory/70 px-4 py-2 text-[15px] font-medium text-brand-deep transition-colors hover:border-brand hover:bg-brand hover:text-brand-ivory"
+                  >
+                    {allOpen ? c.bylaws.collapseAll : c.bylaws.expandAll}
+                  </button>
+                </div>
+                <div className="border-t border-brand/25" lang="zh-CN">
+                  {bylaws.map((ch, i) => {
+                    const sp = ch.title.indexOf(' ')
+                    const num = sp > 0 ? ch.title.slice(0, sp) : ''
+                    const name = sp > 0 ? ch.title.slice(sp + 1) : ch.title
+                    return (
+                      <details
+                        key={ch.title}
+                        open={openCh[i]}
+                        onToggle={(e) => {
+                          const o = (e.currentTarget as HTMLDetailsElement).open
+                          setOpenCh((prev) => (prev[i] === o ? prev : prev.map((v, j) => (j === i ? o : v))))
+                        }}
+                        className="group border-b border-brand/25 bg-brand-ivory/60 open:bg-brand-ivory"
+                      >
+                        <summary className="flex cursor-pointer list-none items-center gap-4 px-4 py-5 sm:px-6 [&::-webkit-details-marker]:hidden">
+                          <span className="w-[64px] flex-none text-[14px] font-semibold tracking-[0.1em] text-brand-gold">{num}</span>
+                          <span className="flex-1 font-serif text-[19px] font-bold leading-snug text-brand-ink sm:text-[21px]">{name}</span>
+                          <span className="hidden flex-none text-[13px] text-brand-stone sm:inline">
+                            {ch.articles.length} {c.bylaws.articles}
+                          </span>
+                          <ChevronDown className="h-5 w-5 flex-none text-brand transition-transform group-open:rotate-180" />
+                        </summary>
+                        <ol className="space-y-5 px-4 pb-7 pt-1 sm:px-6">
+                          {ch.articles.map((a) => (
+                            <li key={a.no} className="text-[17px] leading-[1.9] text-brand-ink/85 sm:text-[18px]">
+                              <span className="mr-2 font-semibold text-brand">{a.no}</span>
+                              {a.text}
+                            </li>
+                          ))}
+                        </ol>
+                      </details>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
