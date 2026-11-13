@@ -7,7 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: { serif: ['"Noto Serif SC"', '"Noto Serif CJK SC"', '"Songti SC"', 'serif'], sans: ['Inter', '"Noto Sans SC"', '"Noto Sans CJK SC"', '"PingFang SC"', '"Microsoft YaHei"', 'sans-serif'] },
+      fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"PingFang SC"', '"Helvetica Neue"', '"Segoe UI"', '"Microsoft YaHei"', '"Noto Sans CJK SC"', '"Noto Sans SC"', 'Arial', 'sans-serif'] },
       colors: {
         brand: { DEFAULT: '#9C6845', deep: '#5C3A22', ink: '#281D13', gold: '#C89B5A', apricot: '#F5E3CE', ivory: '#FBF6EE', stone: '#8B8578', night: '#1B2A45' },
         border: "hsl(var(--border))",

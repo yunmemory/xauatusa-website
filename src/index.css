@@ -4,11 +4,11 @@
 
 @layer base {
   :root {
-    --background: 33 70% 96%;
+    --background: 36 60% 96%;
     --foreground: 28 37% 12%;
-    --card: 36 64% 96%;
+    --card: 0 0% 100%;
     --card-foreground: 28 37% 12%;
-    --popover: 36 64% 96%;
+    --popover: 0 0% 100%;
     --popover-foreground: 28 37% 12%;
     --primary: 26 39% 44%;
     --primary-foreground: 36 64% 96%;
@@ -20,15 +20,15 @@
     --accent-foreground: 28 37% 12%;
     --destructive: 0 70% 45%;
     --destructive-foreground: 0 0% 98%;
-    --border: 33 40% 80%;
-    --input: 33 40% 80%;
+    --border: 33 30% 86%;
+    --input: 33 30% 86%;
     --ring: 26 39% 44%;
-    --radius: 0.25rem;
+    --radius: 1rem;
   }
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 84px;
+    scroll-padding-top: 72px;
     -webkit-text-size-adjust: 100%;
   }
   * {
@@ -37,54 +37,99 @@
   body {
     @apply bg-brand-ivory text-brand-ink font-sans antialiased;
     font-size: 18px;
-    line-height: 1.7;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
   }
   ::selection {
     background: #c89b5a;
     color: #281d13;
   }
+  :focus-visible {
+    outline: 2px solid #9c6845;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
 }
 
 @layer components {
-  .grid-paper {
-    background-image:
-      linear-gradient(to right, rgba(156, 104, 69, 0.09) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(156, 104, 69, 0.09) 1px, transparent 1px),
-      linear-gradient(to right, rgba(156, 104, 69, 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(156, 104, 69, 0.04) 1px, transparent 1px);
-    background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+  .text-gradient {
+    background: linear-gradient(115deg, #5c3a22 0%, #9c6845 42%, #c89b5a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
-  .grid-paper-night {
-    background-image:
-      linear-gradient(to right, rgba(200, 155, 90, 0.10) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(200, 155, 90, 0.10) 1px, transparent 1px);
-    background-size: 96px 96px, 96px 96px;
+  .text-gradient-gold {
+    background: linear-gradient(115deg, #f5e3ce 0%, #c89b5a 55%, #e9c891 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
-  .eyebrow {
-    @apply font-sans text-[13px] font-medium uppercase tracking-[0.28em];
+  .glass {
+    background: rgba(251, 246, 238, 0.88);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
   }
-  .arch-mask {
-    border-radius: 999px 999px 0 0;
+  .night {
+    background: radial-gradient(120% 90% at 50% 0%, #24375c 0%, #152038 45%, #0b111f 100%);
+  }
+  .card-soft {
+    box-shadow: 0 1px 2px rgba(40, 29, 19, 0.04), 0 12px 32px -12px rgba(40, 29, 19, 0.1);
+  }
+  .card-lift {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .card-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 2px 4px rgba(40, 29, 19, 0.04), 0 28px 56px -18px rgba(92, 58, 34, 0.28);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .reveal {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
   }
-  .reveal.is-in {
-    opacity: 1;
-    transform: none;
+  50% {
+    opacity: 0.9;
   }
-  .orbit-spin {
-    animation: orbit 140s linear infinite;
-    transform-origin: center;
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
   }
-  @keyframes orbit {
-    to {
-      transform: rotate(360deg);
-    }
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+@keyframes sheen {
+  0% {
+    transform: translateX(-140%) rotate(18deg);
+  }
+  100% {
+    transform: translateX(240%) rotate(18deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

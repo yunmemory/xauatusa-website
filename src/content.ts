@@ -22,6 +22,7 @@ const zh = {
     tagline: ['散迹海外，如群星熠熠各自闪耀；', '同心聚力，循同心圆汇聚成星河。'],
     ctaJoin: '加入我们',
     ctaMore: '了解校友会',
+    scroll: '向下滑动',
   },
   about: {
     eyebrow: 'About',
@@ -31,7 +32,7 @@ const zh = {
       '校友会面向全美国的建大校友，计划在纽约州注册为独立的会员制非营利组织。会员不缴强制会费，捐赠完全自愿。',
     ],
     stats: [
-      { value: '约 100', label: '位在美校友已在群中' },
+      { value: '100+', label: '位在美校友已在群中' },
       { value: '全美', label: '覆盖范围，按地区组织聚会' },
       { value: '0', label: '强制会费，捐赠完全自愿' },
       { value: '2026', label: '创会之年' },
@@ -61,6 +62,8 @@ const zh = {
     eyebrow: 'Arch · Star',
     title: '拱与星',
     lead: '以母校为圆心，拱为骨，星为记。',
+    voted: '2026 年 11 月，经全体校友投票确定。',
+    hint: '继续向下滑动，看会徽里的每一处细节',
     points: [
       { k: '拱', en: 'ARCH', d: '取自母校主入口大门。拱是构筑之始，也是连接之形，撑起整枚会徽的骨架。' },
       { k: '星', en: 'STAR', d: '承袭母校校旗“群星荟聚”的意象，也是中美两国国旗共有的元素，象征美国校友会。' },
@@ -85,7 +88,8 @@ const zh = {
     next: '计划中',
     steps: [
       { when: '2026 年 10 月', t: '成立筹备组', d: '启动会徽征集，起草章程，注册域名 xauatusa.org 和校友会公共邮箱。', state: 'done' },
-      { when: '2026 年 11 月', t: '章程定稿 · 会徽投票', d: '章程讨论稿征求校友意见，全体校友投票确定会徽，建立校友名册。', state: 'now' },
+      { when: '2026 年 11 月 9 日', t: '会徽确定', d: '共征集到八个设计方案，经全体校友投票，金棕色“拱·星”圆徽当选。', state: 'done' },
+      { when: '2026 年 11 月', t: '章程定稿', d: '章程讨论稿公开征求校友意见，同时建立校友名册。', state: 'now' },
       { when: '感恩节周末（暂定 11 月 28 日）', t: '成立大会', d: '线下举行成立仪式，同步线上直播，宣读章程、颁发聘书、合影留念。', state: 'next' },
       { when: '成立之后', t: '长期建设', d: '注册非营利组织，建立每年迎新机制，定期举办地区聚会，接待母校来访。', state: 'next' },
     ],
@@ -147,6 +151,7 @@ const en: Content = {
     tagline: ['Scattered across America, each of us shines like a star;', 'drawn to one center, together we form a constellation.'],
     ctaJoin: 'Join us',
     ctaMore: 'Learn more',
+    scroll: 'Scroll',
   },
   about: {
     eyebrow: 'About',
@@ -156,7 +161,7 @@ const en: Content = {
       'The association serves XAUAT alumni nationwide and plans to incorporate in New York State as an independent, membership-based nonprofit. Membership carries no mandatory dues; all giving is voluntary.',
     ],
     stats: [
-      { value: '~100', label: 'alumni already in our group' },
+      { value: '100+', label: 'alumni already in our group' },
       { value: 'Nationwide', label: 'with regional gatherings' },
       { value: '$0', label: 'mandatory dues — giving is voluntary' },
       { value: '2026', label: 'year of founding' },
@@ -186,6 +191,8 @@ const en: Content = {
     eyebrow: 'Arch · Star',
     title: 'The arch and the star',
     lead: 'Our alma mater at the center; the arch as frame, the star as mark.',
+    voted: 'Chosen by alumni vote in November 2026.',
+    hint: 'Keep scrolling to see every detail of the emblem',
     points: [
       { k: '拱', en: 'ARCH', d: "Drawn from the university's main gate. The arch is where building begins and a shape that connects; it frames the whole emblem." },
       { k: '星', en: 'STAR', d: "Echoes the gathered stars of the university flag, and the star shared by the Chinese and U.S. flags — the mark of our U.S. association." },
@@ -210,7 +217,8 @@ const en: Content = {
     next: 'Planned',
     steps: [
       { when: 'October 2026', t: 'Organizing committee formed', d: 'Emblem call for designs, bylaws drafted, xauatusa.org and the association email registered.', state: 'done' },
-      { when: 'November 2026', t: 'Bylaws & emblem vote', d: 'Draft bylaws open for alumni comment; all alumni vote on the emblem; alumni directory launched.', state: 'now' },
+      { when: 'November 9, 2026', t: 'Emblem chosen', d: 'Eight designs were submitted; alumni voted and the brown-and-gold “Arch · Star” seal won.', state: 'done' },
+      { when: 'November 2026', t: 'Bylaws finalized', d: 'Draft bylaws open for alumni comment; alumni directory under way.', state: 'now' },
       { when: 'Thanksgiving weekend (tentatively Nov 28)', t: 'Founding ceremony', d: 'In-person ceremony with a live stream: bylaws read, officers appointed, group photo.', state: 'next' },
       { when: 'After founding', t: 'Building for the long term', d: 'Nonprofit registration, a yearly welcome program, regular regional gatherings and university visits.', state: 'next' },
     ],
